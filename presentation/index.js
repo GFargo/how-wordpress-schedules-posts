@@ -75,6 +75,7 @@ const gifs = {
 	time_is_abstract: require("../assets/time_is_abstract.gif"),
 	frantic: require("../assets/frantic.gif"),
 	timelord: require("../assets/timelord.gif"),
+	ping_request: require("../assets/ping_request.gif"),
 	traffic_jam: require("../assets/traffic_jam.gif"),
 	whats_happening: require("../assets/whats_happening.gif"),
 	waiting: require("../assets/waiting.gif"),
@@ -126,18 +127,30 @@ export default class Presentation extends React.Component {
 							</Heading>
 							<Layout>
 									<Fill>
-											<Image transition={["fade", "zoom"]} src={images.scheduling_post.replace("/", "")} margin="36px 8px 0" />
+											<Image src={images.scheduling_post.replace("/", "")} margin="36px 8px 0" />
 									</Fill>
 									<Fill>
-											<Image transition={["fade", "zoom"]} src={images.scheduled_for.replace("/", "")} margin="36px 8px 0" />
+											<Image src={images.scheduled_for.replace("/", "")} margin="36px 8px 0" />
 									</Fill>
 							</Layout>
 					</Slide>
 
-					<Slide transition={["fade"]} bgColor="light_blue" bgImage={images.city_04.replace("/", "")}>
-							<Heading size={1} caps textColor="white" textFont="primary">
-								Expectations
+					<Slide transition={["fade"]} bgImage={images.city_03.replace("/", "")}
+						notes="The goal of this presentation is to teach everyone enough about how WordPress schedules posts in order to set clear concise expectations for clients when using sheduling posts to be published."
+					>
+							<Heading size={1} padding="16px" bgColor="rgba(0,0,0,0.5)" caps textColor="white" textFont="primary">
+								Setting Expectations
 							</Heading>
+					</Slide>
+
+					<Slide transition={["fade"]} bgImage={images.city_02.replace("/", "")}>
+						<Heading size={1} caps lineHeight={1} textColor="black">The Edit Post Screen</Heading>
+						<Image transition={["fade"]} src={images.edit_post.replace("/", "")} width="100%" />
+					</Slide>
+
+					<Slide transition={["fade"]} bgImage={images.city_02.replace("/", "")}>
+						<Heading size={1} caps lineHeight={1} textColor="black">Stepping back for a moment...</Heading>
+						<Image transition={["fade", "zoom"]} src={gifs.loop_zoidberg.replace("/", "")} margin="36px 8px 0" />
 					</Slide>
 
 					<Slide transition={["fade"]} bgImage={images.city_04.replace("/", "")}>
@@ -244,13 +257,28 @@ export default class Presentation extends React.Component {
 					</Slide>
 
 					<Slide transition={["fade"]} bgImage={images.city_02.replace("/", "")}>
+							<Image src={gifs.ping_request.replace("/", "")} />
 							<Heading size={1} fit caps lineHeight={1} textColor="black">
 								WordPress's Pseudo Cron
 							</Heading>
-							<Image src={gifs.loop_wargames.replace("/", "")} />
 							<Heading size={1} fit caps lineHeight={1} textColor="white">
-								WP-Cron
+								WP-Cron.php
 							</Heading>
+					</Slide>
+
+
+					<Slide transition={["fade"]} bgImage={images.city_02.replace("/", "")}>
+							<Heading size={1} fit caps lineHeight={1} textColor="black" margin="0 0 24px">
+								WP-Cron Example
+							</Heading>
+							<Layout>
+								<Fill>
+									<CodePane
+										padding="24px"
+								    source={require("raw!../assets/code/wp-cron_basic-scheduled-function.example")}
+									/>
+								</Fill>
+							</Layout>
 					</Slide>
 
 
@@ -275,11 +303,11 @@ export default class Presentation extends React.Component {
 							<Image margin="32px auto 0" src={gifs.timelord.replace("/", "")} />
 					</Slide>
 
-					<Slide transition={["fade"]} bgColor="primary">
-							<Heading size={1} fit caps lineHeight={1} textColor="white">
+					<Slide transition={["fade"]} bgImage={images.city_03.replace("/", "")}>
+							<Heading size={1} fit caps lineHeight={1} textColor="black" margin="0 0 32px">
 									What is a Cron job?
 							</Heading>
-							<Text textColo="white" lineHeight={1.25}>
+							<Text textColor="white" lineHeight={1.25} padding="16px" bgColor="rgba(0,0,0,0.5)" >
 								is a Linux utility which schedules a command or script on your server to run automatically at a specified time and date.
 							</Text>
 							<Appear fid="1">
@@ -331,6 +359,16 @@ export default class Presentation extends React.Component {
 							</Heading>
 					</Slide>
 
+
+					<Slide transition={["fade"]} bgImage={gifs.loop_wargames.replace("/", "")}>
+							<Heading size={1} fit caps lineHeight={1} textColor="black" margin="0 0 32px">
+									Server Farm of "Runners"
+							</Heading>
+							<Text textColor="white" lineHeight={1.25} padding="16px" bgColor="rgba(0,0,0,0.5)" >"Scheduled jobs on VIP Go use the WP Cron API provided by WordPress core. The cron jobs are initiated and regulated via the WP Cron Control plugin. We trigger this on a one minute interval via HTTP request from our WordPress.com Jobs System."</Text>
+							<Text textColor="black" lineHeight={1.25} padding="16px" bgColor="rgba(255,255,255,255.5)">
+								For Devs: VIP will flag Cron tasks that are scheduled to occur less than every 15 mintes, gets expensive.
+							</Text>
+					</Slide>
 
 					<Slide transition={["fade"]} bgImage={images.city_04.replace("/", "")}>
 						<Image padding="24px" transition={["fade", "zoom"]} src={gifs.loop_coffee_house.replace("/", "")} height="360px" />

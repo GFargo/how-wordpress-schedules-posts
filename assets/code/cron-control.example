@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Automatic Cron-Control
+ * class-events.php
+ * @see https://github.com/Automattic/Cron-Control/blob/2811352d1fee3be200e0332f9db21761eea440da/includes/class-events.php#L57-L60
+ */
+
+// Select only those events to run in the next sixty seconds
+// Will include missed events as well
+$current_events = $internal_events = array();
+$current_window = strtotime( sprintf( '+%d seconds', JOB_QUEUE_WINDOW_IN_SECONDS ) );
