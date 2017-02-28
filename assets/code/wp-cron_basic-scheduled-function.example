@@ -1,0 +1,16 @@
+<?php
+/**
+ * Scheduling Basic Cron Task
+ * @see https://codex.wordpress.org/Function_Reference/wp_cron
+ */
+
+// Included in a setup / theme init function
+if ( ! wp_next_scheduled( 'my_task_hook' ) ) {
+  wp_schedule_event( time(), 'hourly', 'my_task_hook' );
+}
+
+// function for wp-cron.php to fire on schedule
+function my_task_function() {
+  wp_mail( 'your@email.com', 'Automatic email', 'Automatic scheduled email from WordPress.');
+}
+add_action( 'my_task_hook', 'my_task_function' );

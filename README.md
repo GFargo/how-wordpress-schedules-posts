@@ -6,7 +6,7 @@ An overview on how WordPress CMD schedules posts
 ### Additional Resouces:
 
 * [Schedule a Post - make.wordpress.org](https://make.wordpress.org/support/user-manual/content/posts/schedule-a-post/)
-*
+* [WP-Cron Source Code on Trac](https://core.trac.wordpress.org/browser/trunk/src/wp-cron.php)
 
 
 ## Presentation Technology
